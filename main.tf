@@ -19,3 +19,15 @@ resource "jenkins_job" "job" {
   }
 }
 
+data "aws_instance" "jenkins" {
+  id = "i-0843f312a46cad17a"
+}
+
+resource "aws_route53_record" "www" {
+  zone_id = "Z00402221E1TOA6JZJNT9"
+  name    = "jenkins.devopsa.online"
+  type    = "A"
+  ttl     = 300
+  records = [data.aws_instance.jenkins.public_ip]
+}
+
