@@ -1,6 +1,6 @@
 provider "jenkins" {
 
-  server_url = "http://3.228.7.187:8080"
+  server_url = "http://jenkins.devopsa.online:8080"
   username   = data.aws_ssm_parameter.jenkins_user.value
   password   = data.aws_ssm_parameter.jenkins_pass.value
 }
