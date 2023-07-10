@@ -15,9 +15,9 @@ resource "jenkins_job" "sb-job" {
     name = lookup(element(var.sb-job, count.index), "name", null )
   })
 
-  /*lifecycle {
+  lifecycle {
     ignore_changes = [template]
-  }*/
+  }
 
 }
 
@@ -33,9 +33,9 @@ resource "jenkins_job" "mb-job" {
     name = lookup(element(var.mb-job, count.index), "name", null )
   })
 
-  /*lifecycle {
+  lifecycle {
     ignore_changes = [template]
-  }*/
+  }
 
 }
 
