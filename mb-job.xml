@@ -30,7 +30,7 @@
                     <id>a1246b92-e070-468c-8ddd-63377e88b7fa</id>
                     <apiUri>https://api.github.com</apiUri>
                     <credentialsId>GitHub</credentialsId>
-                    <repoOwner>Akhileshreddy9181</repoOwner>
+                    <repoOwner>akhileshreddy9181</repoOwner>
                     <repository>${name}</repository>
                     <repositoryUrl>${repo_url}</repositoryUrl>
                     <traits>
@@ -50,6 +50,13 @@
                 <strategy class="jenkins.branch.DefaultBranchPropertyStrategy">
                     <properties class="empty-list"/>
                 </strategy>
+                <buildStrategies>
+                    <jenkins.branch.buildstrategies.basic.BranchBuildStrategyImpl plugin="basic-branch-build-strategies@81.v05e333931c7d"/>
+                    <jenkins.branch.buildstrategies.basic.TagBuildStrategyImpl plugin="basic-branch-build-strategies@81.v05e333931c7d">
+                        <atLeastMillis>-1</atLeastMillis>
+                        <atMostMillis>604800000</atMostMillis>
+                    </jenkins.branch.buildstrategies.basic.TagBuildStrategyImpl>
+                </buildStrategies>
             </jenkins.branch.BranchSource>
         </data>
         <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../.."/>
