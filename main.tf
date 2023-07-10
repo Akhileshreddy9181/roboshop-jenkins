@@ -3,16 +3,34 @@ resource "jenkins_folder" "folders" {
   name = element(var.folders, count.index)
 }
 
-resource "jenkins_job" "job" {
+resource "jenkins_job" "sb-job" {
   depends_on = [jenkins_folder.folders]
 
-  count = length(var.jobs)
-  name     = lookup(element(var.jobs, count.index), "name", null )
-  folder   = "/job/${lookup(element(var.jobs, count.index), "folder", null )}"
+  count = length(var.sb-job)
+  name     = lookup(element(var.sb-job, count.index), "name", null )
+  folder   = "/job/${lookup(element(var.sb-job, count.index), "folder", null )}"
 
   template = templatefile("${path.module}/sb-job.xml", {
-    repo_url = lookup(element(var.jobs, count.index), "repo_url", null )
-    name = lookup(element(var.jobs, count.index), "name", null )
+    repo_url = lookup(element(var.sb-job, count.index), "repo_url", null )
+    name = lookup(element(var.sb-job, count.index), "name", null )
+  })
+
+  /*lifecycle {
+    ignore_changes = [template]
+  }*/
+
+}
+
+resource "jenkins_job" "mb-job" {
+  depends_on = [jenkins_folder.folders]
+
+  count = length(var.mb-job)
+  name     = lookup(element(var.mb-job, count.index), "name", null )
+  folder   = "/job/${lookup(element(var.mb-job, count.index), "folder", null )}"
+
+  template = templatefile("${path.module}/sb-job.xml", {
+    repo_url = lookup(element(var.mb-job, count.index), "repo_url", null )
+    name = lookup(element(var.mb-job, count.index), "name", null )
   })
 
   /*lifecycle {
