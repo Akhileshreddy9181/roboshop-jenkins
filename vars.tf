@@ -8,7 +8,8 @@ variable "mb-job" {
     { name = "catalogue", folder = "CI-Pipeline", repo_url = "https://github.com/akhileshreddy9181/catalogue.git" },
     { name = "user", folder = "CI-Pipeline", repo_url = "https://github.com/akhileshreddy9181/user" },
     { name = "shipping", folder = "CI-Pipeline", repo_url = "https://github.com/akhileshreddy9181/shipping" },
-    { name = "payment", folder = "CI-Pipeline", repo_url = "https://github.com/akhileshreddy9181/payment" }
+    { name = "payment", folder = "CI-Pipeline", repo_url = "https://github.com/akhileshreddy9181/payment" },
+    { name = "aws-ssm-param-store", folder = "CI-Pipeline", repo_url = "https://github.com/akhileshreddy9181/aws-ssm-param-store" }
   ]
 
 }
